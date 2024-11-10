@@ -65,9 +65,13 @@
                         </Grid.ColumnDefinitions>
                         <Entry Grid.Column="0" 
                                Text="{Binding Player1.Symbol1}"
+                               FontAttributes="Bold"
+                               FontSize="24"
                                TextColor="{Binding Player1.Color1.Color}"/>
                         <Entry Grid.Column="1" 
                                Text="{Binding Player1.Symbol2}"
+                               FontAttributes="Bold"
+                               FontSize="24"
                                TextColor="{Binding Player1.Color2.Color}"/>
                     </Grid>
                     <Grid Grid.Row="2">
