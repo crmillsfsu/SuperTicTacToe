@@ -8,13 +8,17 @@
     Shell.FlyoutBehavior="Disabled"
     Title="SuperTicTacToe">
 
-    <!--<ShellContent
+    <ShellContent
         Title=""
         ContentTemplate="{DataTemplate views:StartScreen}"
-        Route="MainPage" />-->
+        Route="MainPage" />
+    <ShellContent
+        Title=""
+        ContentTemplate="{DataTemplate views:GameBoardSelectionScreen}"
+        Route="BoardSelection" />
     <ShellContent
         Title=""
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="Game" />
 
 </Shell>

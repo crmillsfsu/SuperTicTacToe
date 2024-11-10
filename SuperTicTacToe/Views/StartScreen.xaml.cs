@@ -9,7 +9,7 @@ public partial class StartScreen : ContentPage
 
     private void PlayClicked(object sender, EventArgs e)
     {
-        Shell.Current.GoToAsync("//Game");
+        Shell.Current.GoToAsync("//BoardSelection");
     }
 
     private void ExitClicked(object sender, EventArgs e)

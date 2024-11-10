@@ -1,10 +1,5 @@
 ﻿using SuperTicTacToe.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Cell = SuperTicTacToe.Models.Cell;
 namespace SuperTicTacToe.Services
 {
     public class GameService
@@ -31,6 +26,19 @@ namespace SuperTicTacToe.Services
             }
         }
 
+        public void BuildBoard()
+        {
+            Rows = new List<Row>();
+            for (int i = 0; i < SelectedRows; i++)
+            {
+                Rows.Add(new Row());
+                for (int j = 0; j < SelectedColumns; j++)
+                {
+                    Rows[i]?.Columns?.Add(new Cell($" "));
+                }
+            }
+        }
+
         public int SelectedRows { get; set; }
         public int SelectedColumns { get; set; }
 
@@ -38,6 +46,20 @@ namespace SuperTicTacToe.Services
 
         public Player? Player1 { get; set; }
         public Player? Player2 { get; set; }
+
+        private static GameService? instance;
+        public static GameService Current
+        {
+            get
+            {
+                if(instance == null)
+                {
+                    instance = new GameService();
+                }
+
+                return instance;
+            }
+        }
         private GameService()
         {
         }

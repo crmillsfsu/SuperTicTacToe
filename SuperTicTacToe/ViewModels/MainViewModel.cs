@@ -1,4 +1,5 @@
 ﻿using SuperTicTacToe.Models;
+using SuperTicTacToe.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,6 +15,14 @@ namespace SuperTicTacToe.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        public GameService GameService
+        {
+            get
+            {
+                return GameService.Current;
+            }
+        }
+
         public List<int> RowColumnSelectionOptions { 
             get
             {
@@ -35,10 +44,24 @@ namespace SuperTicTacToe.ViewModels
             }
         }
 
-        public int SelectedRows { get; set; }
-        public int SelectedColumns { get; set; }
+        public int SelectedRows { 
+            get { 
+                return GameService.Current.SelectedRows;
+            } 
+        }
+        public int SelectedColumns { 
+            get
+            {
+                return GameService.Current.SelectedColumns;
+            }
+        }
 
-        public ObservableCollection<Row>? Rows { get; set; }
+        public ObservableCollection<Row>? Rows {
+            get
+            {
+                return new ObservableCollection<Row>(GameService.Current?.Rows ?? new List<Row>());
+            }
+        }
 
         public Player? Player1 { get; set; }
         public Player? Player2 { get; set; }
@@ -55,20 +78,20 @@ namespace SuperTicTacToe.ViewModels
             Player2 = new Player();
         }
 
-        public void BuildBoard()
-        {
-            Rows = new ObservableCollection<Row>();
-            for(int i = 0; i < SelectedRows; i++)
-            {
-                Rows.Add(new Row());
-                for(int j= 0; j < SelectedColumns; j++)
-                {
-                    Rows[i]?.Columns?.Add(new Cell($" "));
-                }
-            }
+        //public void BuildBoard()
+        //{
+        //    Rows = new ObservableCollection<Row>();
+        //    for(int i = 0; i < SelectedRows; i++)
+        //    {
+        //        Rows.Add(new Row());
+        //        for(int j= 0; j < SelectedColumns; j++)
+        //        {
+        //            Rows[i]?.Columns?.Add(new Cell($" "));
+        //        }
+        //    }
 
-            NotifyPropertyChanged("Rows");
-        }
+        //    NotifyPropertyChanged("Rows");
+        //}
 
         public void Refresh()
         {

@@ -11,18 +11,19 @@
 
         <Label Text="Rows:" Grid.Column="0"/>
         <Picker 
-         ItemsSource="{Binding RowColumnSelectionOptions}"
-         SelectedItem="{Binding SelectedRows}"
-         Grid.Column="1"/>
+             ItemsSource="{Binding RowColumnSelectionOptions}"
+             SelectedItem="{Binding GameService.SelectedRows}"
+             Grid.Column="1"/>
 
-                <Label Text="Columns" Grid.Column="2"/>
-                <Picker 
-         ItemsSource="{Binding RowColumnSelectionOptions}"
-         SelectedItem="{Binding SelectedColumns}"
-         Grid.Column="3"/>
-                <Button
-         Grid.Column="4"
-         Text="Go"
-         />
+        <Label Text="Columns" Grid.Column="2"/>
+        <Picker 
+             ItemsSource="{Binding RowColumnSelectionOptions}"
+             SelectedItem="{Binding GameService.SelectedColumns}"
+             Grid.Column="3"/>
+        <Button
+             Grid.Column="4"
+             Text="Go"
+            Clicked="GoClicked"
+             />
     </VerticalStackLayout>
 </ContentPage>
