@@ -63,7 +63,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Services\" />
+	  <MauiXaml Update="Views\GameBoardSelectionScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\StartScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
