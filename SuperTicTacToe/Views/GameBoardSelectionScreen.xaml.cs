@@ -14,6 +14,7 @@ public partial class GameBoardSelectionScreen : ContentPage
     private void GoClicked(object sender, EventArgs e)
     {
 		GameService.Current.BuildBoard();
-		Shell.Current.GoToAsync("//Game");
+		Shell.Current.GoToAsync("//PlayerSelection");
+		
     }
 }

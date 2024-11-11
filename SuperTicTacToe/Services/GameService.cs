@@ -1,4 +1,5 @@
 ﻿using SuperTicTacToe.Models;
+using System.Collections.ObjectModel;
 using Cell = SuperTicTacToe.Models.Cell;
 namespace SuperTicTacToe.Services
 {
@@ -28,7 +29,7 @@ namespace SuperTicTacToe.Services
 
         public void BuildBoard()
         {
-            Rows = new List<Row>();
+            Rows = new ObservableCollection<Row>();
             for (int i = 0; i < SelectedRows; i++)
             {
                 Rows.Add(new Row());
@@ -42,7 +43,7 @@ namespace SuperTicTacToe.Services
         public int SelectedRows { get; set; }
         public int SelectedColumns { get; set; }
 
-        public List<Row>? Rows { get; set; }
+        public ObservableCollection<Row>? Rows { get; set; }
 
         public Player? Player1 { get; set; }
         public Player? Player2 { get; set; }
@@ -62,6 +63,8 @@ namespace SuperTicTacToe.Services
         }
         private GameService()
         {
+            Player1 = new Player();
+            Player2 = new Player();
         }
     }
 }

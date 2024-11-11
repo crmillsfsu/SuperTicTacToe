@@ -23,27 +23,6 @@ namespace SuperTicTacToe.ViewModels
             }
         }
 
-        public List<int> RowColumnSelectionOptions { 
-            get
-            {
-                return new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-            }
-        }
-
-        public List<ColorChoice> SymbolColorOptions
-        {
-            get
-            {
-                return new List<ColorChoice> {
-                    new ColorChoice {Color = Colors.Blue, NameDisplay = "Blue" }
-                    , new ColorChoice {Color = Colors.Green, NameDisplay = "Green" }
-                    , new ColorChoice { Color = Colors.Red, NameDisplay = "Red" }
-                    , new ColorChoice { Color = Colors.Purple, NameDisplay = "Purple" }
-                    , new ColorChoice {Color = Colors.Orange, NameDisplay = "Orange" }
-                };
-            }
-        }
-
         public int SelectedRows { 
             get { 
                 return GameService.Current.SelectedRows;
@@ -59,12 +38,25 @@ namespace SuperTicTacToe.ViewModels
         public ObservableCollection<Row>? Rows {
             get
             {
-                return new ObservableCollection<Row>(GameService.Current?.Rows ?? new List<Row>());
+                return GameService.Current?.Rows;
             }
         }
 
-        public Player? Player1 { get; set; }
-        public Player? Player2 { get; set; }
+        public Player? Player1
+        {
+            get
+            {
+                return GameService.Current.Player1;
+            }
+        }
+
+        public Player? Player2
+        {
+            get
+            {
+                return GameService.Current.Player2;
+            }
+        }
 
         public event PropertyChangedEventHandler? PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -72,26 +64,31 @@ namespace SuperTicTacToe.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public MainViewModel()
+        private int playerCounter;
+
+        private int symbolCounter;
+
+        public bool IsPlayer1Turn
         {
-            Player1 = new Player();
-            Player2 = new Player();
+            get
+            {
+                return playerCounter % 2 == 0;
+            }
         }
 
-        //public void BuildBoard()
-        //{
-        //    Rows = new ObservableCollection<Row>();
-        //    for(int i = 0; i < SelectedRows; i++)
-        //    {
-        //        Rows.Add(new Row());
-        //        for(int j= 0; j < SelectedColumns; j++)
-        //        {
-        //            Rows[i]?.Columns?.Add(new Cell($" "));
-        //        }
-        //    }
+        public bool IsPlayer2Turn
+        {
+            get
+            {
+                return playerCounter % 2 != 0;
+            }
+        }
 
-        //    NotifyPropertyChanged("Rows");
-        //}
+        public MainViewModel()
+        {
+            playerCounter = 0;
+            symbolCounter = 0;
+        }
 
         public void Refresh()
         {

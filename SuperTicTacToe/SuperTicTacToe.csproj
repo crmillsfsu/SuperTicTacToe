@@ -63,7 +63,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\PlayerSelectionScreen.xaml.cs">
+	    <DependentUpon>PlayerSelectionScreen.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\GameBoardSelectionScreen.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\PlayerSelectionScreen.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\StartScreen.xaml">

@@ -18,6 +18,10 @@
         Route="BoardSelection" />
     <ShellContent
         Title=""
+        ContentTemplate="{DataTemplate views:PlayerSelectionScreen}"
+        Route="PlayerSelection" />
+    <ShellContent
+        Title=""
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="Game" />
 
