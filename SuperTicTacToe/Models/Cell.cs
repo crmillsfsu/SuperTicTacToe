@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperTicTacToe.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace SuperTicTacToe.Models
     public class Cell : INotifyPropertyChanged
     {
         public string? Display { get; set; }
+        public Color? Color { get; set; }
 
         public Cell(string display)
         {
@@ -30,8 +32,11 @@ namespace SuperTicTacToe.Models
 
         public void DoClick()
         {
-            Display = "X";
+            Display = GameService.Current.CurrentPlayerMoveDisplay;
+            Color = GameService.Current.CurrentPlayerMoveColor;
+            GameService.Current.AdvancePlayerCounter();
             NotifyPropertyChanged("Display");
+            NotifyPropertyChanged("Color");
         }
 
         public Cell() {

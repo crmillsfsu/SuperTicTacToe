@@ -48,6 +48,74 @@ namespace SuperTicTacToe.Services
         public Player? Player1 { get; set; }
         public Player? Player2 { get; set; }
 
+        public string? CurrentPlayerMoveDisplay
+        {
+            get
+            {
+                var returnVal = string.Empty;
+
+                if(CurrentPlayer == 0)
+                {
+                    returnVal = CurrentSymbol == 0 ? Player1?.Symbol1.ToString() : Player1?.Symbol2.ToString();
+                }
+                else
+                {
+                    returnVal = CurrentSymbol == 0 ? Player2?.Symbol1.ToString() : Player2?.Symbol2.ToString();
+                }
+
+                return returnVal;
+            }
+        }
+
+        public Color? CurrentPlayerMoveColor
+        {
+            get
+            {
+                Color? returnVal;
+
+                if (CurrentPlayer == 0)
+                {
+                    returnVal = CurrentSymbol == 0 ? Player1?.Color1?.Color : Player1?.Color2?.Color ?? Colors.Black;
+                }
+                else
+                {
+                    returnVal = CurrentSymbol == 0 ? Player2?.Color1?.Color : Player2?.Color2?.Color ?? Colors.Black;
+                }
+
+                return returnVal;
+            }
+        }
+
+        private int playerCounter;
+
+        private int symbolCounter;
+
+        public void AdvancePlayerCounter()
+        {
+            if(CurrentSymbol == 1)
+            {
+                playerCounter++;
+            }
+            symbolCounter++;
+
+        }
+
+        public int CurrentPlayer
+        {
+            get
+            {
+                return playerCounter % 2;
+            }
+        }
+
+        public int CurrentSymbol
+        {
+            get
+            {
+                return symbolCounter % 2;
+            }
+        }
+
         private static GameService? instance;
         public static GameService Current
         {
@@ -65,6 +133,9 @@ namespace SuperTicTacToe.Services
         {
             Player1 = new Player();
             Player2 = new Player();
+
+            playerCounter = 0;
+            symbolCounter = 0;
         }
     }
 }

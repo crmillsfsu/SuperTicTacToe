@@ -103,7 +103,7 @@
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
                                             <Button BackgroundColor="White" 
-                                                    TextColor="Black" 
+                                                    TextColor="{Binding Color}" 
                                                     BorderColor="Black"
                                                     BorderWidth="1"
                                                     CornerRadius="0"

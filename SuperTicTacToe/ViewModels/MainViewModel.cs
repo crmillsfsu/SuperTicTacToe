@@ -64,30 +64,11 @@ namespace SuperTicTacToe.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private int playerCounter;
 
-        private int symbolCounter;
-
-        public bool IsPlayer1Turn
-        {
-            get
-            {
-                return playerCounter % 2 == 0;
-            }
-        }
-
-        public bool IsPlayer2Turn
-        {
-            get
-            {
-                return playerCounter % 2 != 0;
-            }
-        }
 
         public MainViewModel()
         {
-            playerCounter = 0;
-            symbolCounter = 0;
+
         }
 
         public void Refresh()
